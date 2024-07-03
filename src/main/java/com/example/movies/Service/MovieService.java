@@ -1,10 +1,13 @@
-package com.example.movies;
+package com.example.movies.Service;
 
 
+import com.example.movies.Module.Movie;
+import com.example.movies.Repository.MovieRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -15,4 +18,9 @@ public class MovieService {
     public List<Movie> allMovies(){
      return movieRespository.findAll();
     }
+
+    public Optional<Movie> getMovie(String imdbId){ //Optional because, id may return null
+        return movieRespository.findMovieByImdbId(imdbId);
+    }
+
 }
